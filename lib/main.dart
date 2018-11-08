@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import './pages/classify.dart';
 import './pages/home.dart';
 import './pages/mine.dart';
+import './pages/mine/MinePage.dart';
 
 
 void main() {
@@ -48,7 +49,7 @@ class MyApp extends State<MyOSCClient> {
       children: <Widget>[
         new Home(),
         new Classify(),
-        new Mine()
+        new MinePage()
       ],
       index: _tabIndex,
     );
