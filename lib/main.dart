@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './pages/classify.dart';
 import './pages/home.dart';
-import './pages/mine.dart';
 import './pages/mine/MinePage.dart';
+import 'package:flutter_jpush/flutter_jpush.dart';
 
 
 void main() {
@@ -71,7 +71,12 @@ TextStyle getTabTextStyle(int curIndex) {
   Text getTabTitle(int curIndex) {
     return new Text(appBarTitles[curIndex], style: getTabTextStyle(curIndex));
   }
-  
+  @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      _startupJpush();
+    }
   @override
   Widget build(BuildContext context) {
     initData();
@@ -102,5 +107,10 @@ TextStyle getTabTextStyle(int curIndex) {
         ),
       ),
     );
+  }
+  void _startupJpush() async {
+    print("初始化jpush");
+    await FlutterJPush.startup();
+    print("初始化jpush成功");
   }
 }
